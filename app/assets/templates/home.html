@@ -1,3 +1,18 @@
+<div class="head">
+  <div class=column">
+    <button type="button" ng-click="updateData()">Update food from API</button>
+  </div>
+  <div class=column">
+    <a type="button" href="http://localhost:3000/foods">Browse food DB</a>
+  </div>
+  <div class=column">
+    <a type="button" href="http://localhost:3000/mealplanner#!/">Meals</a>
+  </div>
+  <div class=column">
+    <a href="http://localhost:3000/types">Browse types DB</a>
+  </div>
+</div>
+
 
     <div class="container-fluid first_wrapper" style="display: flex; justify-content: center;max-width:1600px">
       <div class="row" style=" max-width: 1300px;">
@@ -9,15 +24,8 @@
     </div>
 
     <div class="container-fluid post_wrapper">
-      <div class=column">
-        <button type="button" ng-click="updateData()">Update food from API</button>
-      </div>
-      <div class=column">
-        <a type="button" href="http://localhost:3000/foods">Browse food DB</a>
-      </div>
-      <div class=column">
-        <a href="http://localhost:3000/types">Browse types DB</a>
-      </div>
+
+
 
       <div class="meal-entry" ng-repeat="meal in meals">
         <div class="column" ng-repeat="i in [0, 1, 2]">

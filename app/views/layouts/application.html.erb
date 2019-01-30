@@ -10,6 +10,20 @@
     <%= favicon_link_tag asset_path('favicon.png') %>
 
   </head>
+  <div class="head">
+    <div class=column">
+      <button type="button" ng-click="updateData()">Update food from API</button>
+    </div>
+    <div class=column">
+      <a type="button" href="http://localhost:3000/foods">Browse food DB</a>
+    </div>
+    <div class=column">
+      <a type="button" href="http://localhost:3000/mealplanner">Meals</a>
+    </div>
+    <div class=column">
+      <a href="http://localhost:3000/types">Browse types DB</a>
+    </div>
+  </div>
 
     <%= yield %>
 

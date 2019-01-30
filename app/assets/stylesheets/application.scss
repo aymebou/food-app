@@ -30,6 +30,12 @@ h1{
   }
 }
 
+.head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .post_wrapper{
   display: flex;
   flex-direction: column;
