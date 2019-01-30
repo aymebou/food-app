@@ -24,3 +24,5 @@ The mealplanner view finds all the meal using a methods that allows :
 - Efficient research (best case cost in `o(n)` if n is the number of dishes : no meal is under 500 cals, and worst case cost in `o(n^3 / 9)` if all meal combinaison is under 500 cals).
 
 Stack : angularjs + bower / ruby on rails, works with docker
+
+The application uses angular router and rails yield router, which causes some big routing problems, some header links sometimes don't work and sometimes work
