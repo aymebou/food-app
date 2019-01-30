@@ -4,7 +4,7 @@ To run this project, make sure you have docker installed.
 
 ## Setup :
  - `docker-compose build`
- - `docker-compose run web rake db:migrate`
+ - `docker-compose run web rake db:create && rake db:migrate`
  - `docker-compose up`
 
 This should setup the environement, first time building can take some time.
@@ -25,4 +25,16 @@ The mealplanner view finds all the meal using a methods that allows :
 
 Stack : angularjs + bower / ruby on rails, works with docker
 
-The application uses angular router and rails yield router, which causes some big routing problems, some header links sometimes don't work and sometimes work
+The application uses angular router and rails yield router, which causes some big routing problems, some header links sometimes don't work and sometimes work.
+
+
+Screens :
+
+ - The mealplanner view :
+![Screen 1](/app/assets/images/screen.png "Optional Title")
+
+ - The Food database browser/editor
+![Screen 2](/app/assets/images/screen-2.png "Optional Title")
+
+ - The Type Database browser/editor
+![Screen 3](/app/assets/images/screen-3.png "Optional Title")
