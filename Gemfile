@@ -7,7 +7,6 @@ ruby '2.6.0'
 gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
-
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -16,13 +15,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-
-gem 'angular-rails-templates'
-
-gem 'rack-cors', :require => 'rack/cors'
-
-gem "bower-rails", "~> 0.11.0"
-gem 'rest-client'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -34,6 +26,15 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'angular-rails-templates'
+
+gem 'rack-cors', :require => 'rack/cors'
+
+gem "bower-rails", "~> 0.11.0"
+gem 'rest-client'
+
+gem 'nokogiri', '~> 1.8.3'
+gem 'nio4r', '~> 2.0.0'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
