@@ -1,0 +1,60 @@
+@import '_variables.scss';
+@import '_fonts.scss';
+@import 'bootstrap.css';
+@import 'fontawesome.css';
+
+body{
+  background: url('background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+ background-attachment: fixed;
+}
+
+
+.first_wrapper{
+  padding: 5em 5em 2em 5em;
+  font-family: $font-title;
+  .page_title{
+    margin-top: 10em;
+    h1{
+      color: white;
+      font-size: $title_main;
+      margin: 0;
+    }
+    p{
+      color: $green ;
+      font-size: $title_main;
+    }
+  }
+}
+
+.post_wrapper{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 1300px;
+  padding: 5em 5em 2em 5em;
+}
+
+.meal-entry {
+  margin: 20px 0px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5em;
+  border-radius: 6px;
+  color: $green;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.row {
+  margin: auto
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 500px;
+  justify-content: space-around;
+}

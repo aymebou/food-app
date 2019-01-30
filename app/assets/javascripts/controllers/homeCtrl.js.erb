@@ -1,0 +1,130 @@
+angular.module("foodapp").controller('HomeCtrl', ['$scope','$filter', '$http' ,function($scope,$filter,$http){
+	back = "http://localhost:3000/"
+	function loadData() {
+		url = "http://localhost:3000/api/food?type="
+		$http.get(url + 'starter').then(function(data){
+			if (data.data.length == 0) {
+				return
+			}
+			starters = data.data
+			$http.get(url + 'dish').then(function(data){
+				mains = data.data
+				$http.get(url + 'desert').then(function(data){
+					deserts = data.data
+					mealFinder = new MealFinder(starters, mains, deserts, 500)
+					$scope.meals = [mealFinder.nextMeal()]
+					while ((m = mealFinder.nextMeal()) !== undefined) {
+						$scope.meals.push(m)
+					}
+
+
+				});
+			});
+		});
+	}
+
+	loadData();
+
+	$scope.updateData = function () {
+		$http.get(back + 'updatefood').then(function(data) {
+			if (data.status == 200) {
+				loadData()
+			}
+		})
+	}
+}]);
+
+
+class MealFinder {
+	constructor(starters, mains, deserts, maxCal) {
+		this.maxCal = maxCal
+		this.starters = starters;
+		this.mains=mains;
+		this.deserts = deserts;
+		this.tables = {
+			'starters': {
+				'value': 0,
+				'max': starters.length - 1
+			},
+			'mains': {
+				'value': 0,
+				'max': mains.length - 1
+			},
+			'deserts': {
+				'value': 0,
+				'max': deserts.length - 1
+			}
+		}
+		this.lastMoved = 'deserts'
+		this.lastMealWorked = true
+		this.done = false
+	}
+	nextMeal() {
+		if (this.currentMealCal() < this.maxCal) {
+			var meal =  this.currentMeal()
+			this.lastMealWorked = true
+			this.getNextIndexes()
+			return meal
+		}
+		else {
+			this.lastMealWorked = false
+			this.getNextIndexes()
+			if (this.done) {
+				return undefined
+			}
+			return this.nextMeal()
+		}
+
+	}
+	getnextIndexes_LastMealWorked() {
+		if (this.tables.deserts.value < this.tables.deserts.max) {
+			this.lastMoved = 'deserts';
+			this.tables.deserts.value = this.tables.deserts.value + 1;
+		}
+		else if (this.tables.mains.value < this.tables.mains.max) {
+			this.lastMoved = 'mains';
+			this.tables.mains.value = this.tables.mains.value + 1;
+			this.tables.deserts.value = 0;
+		}
+		else if (this.tables.starters.value < this.tables.starters.max) {
+			this.lastMoved = 'starters'
+			this.tables.starters.value = this.tables.starters.value +  1;
+			this.tables.mains.value = 0;
+			this.tables.deserts.value = 0;
+		}
+		else {
+			this.done = true
+		}
+	}
+	getnextIndexes_LastMealDidntWork() {
+		if (this.lastMoved == 'deserts') {
+			this.lastMoved = 'mains';
+			this.tables.mains.value = this.tables.mains.value + 1;
+			this.tables.deserts.value = 0;
+		}
+		else if (this.lastMoved == 'mains') {
+			this.lastMoved = 'starters';
+			this.tables.starters.value = this.tables.starters.value +1;
+			this.tables.mains.value = 0;
+			this.tables.deserts.value = 0;
+		}
+		else {
+			this.done = true
+		}
+	}
+	getNextIndexes() {
+		if (this.lastMealWorked){
+			this.getnextIndexes_LastMealWorked()
+		}
+		else {
+			this.getnextIndexes_LastMealDidntWork()
+		}
+	}
+
+	currentMeal() {
+		return [this.starters[this.tables.starters.value], this.mains[this.tables.mains.value], this.deserts[this.tables.deserts.value]]
+	}
+	currentMealCal() {
+		return this.starters[this.tables.starters.value].cal + this.mains[this.tables.mains.value].cal + this.deserts[this.tables.deserts.value].cal
+	}
+}

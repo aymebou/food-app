@@ -1,0 +1,37 @@
+
+    <div class="container-fluid first_wrapper" style="display: flex; justify-content: center;max-width:1600px">
+      <div class="row" style=" max-width: 1300px;">
+        <div class="col-lg-6 page_title">
+          <h1>Foodvisor.</h1>
+          <p>Recrutement</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid post_wrapper">
+      <div class=column">
+        <button type="button" ng-click="updateData()">Update food from API</button>
+      </div>
+
+      <div class="meal-entry" ng-repeat="meal in meals">
+        <div class="column" ng-repeat="i in [0, 1, 2]">
+          <div class="row title">
+            {{meal[i].name}}
+          </div>
+          <div class="row picture">
+            <img style="width: 250px" ng-src="{{meal[i].imgUrl}}" alt="Picture">
+          </div>
+          <div class="row cal">
+            Calories : {{meal[i].cal}}
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+    <!-- ********************************************* -->
+    <!-- TOPBAR -->
+    <!-- ********************************************* -->
