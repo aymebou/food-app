@@ -1,11 +1,15 @@
 FROM ruby:2.6
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt update -qq && apt-get install -y postgresql-client curl software-properties-common
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash
+RUN apt install -y nodejs
 RUN mkdir /food-app
 WORKDIR /food-app
 COPY Gemfile /food-app/Gemfile
 COPY Gemfile.lock /food-app/Gemfile.lock
+COPY Rakefile /food-app/Rakefile
 RUN bundle install
 COPY . /food-app
+RUN gem install rake && npm i -g bower && rake bower:install
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
