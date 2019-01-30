@@ -4,10 +4,16 @@
 @import 'fontawesome.css';
 
 body{
+  font-family: $primary-font;
   background: url('background.png');
   background-repeat: no-repeat;
   background-size: cover;
  background-attachment: fixed;
+}
+h1{
+  color: white;
+  font-size: $title_main;
+  margin: 0;
 }
 
 
@@ -16,11 +22,7 @@ body{
   font-family: $font-title;
   .page_title{
     margin-top: 10em;
-    h1{
-      color: white;
-      font-size: $title_main;
-      margin: 0;
-    }
+
     p{
       color: $green ;
       font-size: $title_main;
@@ -34,6 +36,26 @@ body{
   flex-wrap: wrap;
   max-width: 1300px;
   padding: 5em 5em 2em 5em;
+}
+
+form {
+
+  flex-direction: column;
+  display: flex;
+}
+
+form .field {
+  background-color: white;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 10px;
+}
+
+table {
+  width: 400px;
+  background-color: white;
+  padding: 15px;
+  margin: 10px;
 }
 
 .meal-entry {
