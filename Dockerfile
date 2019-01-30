@@ -8,8 +8,9 @@ COPY Gemfile /food-app/Gemfile
 COPY Gemfile.lock /food-app/Gemfile.lock
 COPY Rakefile /food-app/Rakefile
 RUN bundle install
+RUN gem install rake
 COPY . /food-app
-RUN gem install rake && npm i -g bower && rake bower:install
+RUN npm i -g bower && echo '{ "allow_root": true }' > /root/.bowerrc && rake bower:install
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
