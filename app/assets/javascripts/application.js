@@ -27,8 +27,6 @@
 //= require angular-xeditable/dist/js/xeditable
 //= require angular-ui-router/release/angular-ui-router
 //= require underscore/underscore
-//= require d3/d3
-//= require d3-scale-chromatic/d3-scale-chromatic.v1.min
 //= require angular-rails-templates
 
 //= require main.js
