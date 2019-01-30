@@ -33,7 +33,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem "bower-rails", "~> 0.11.0"
 gem 'rest-client'
 
-gem 'nokogiri', '~> 1.8.3'
+gem 'nokogiri', '~> 1.8.5'
 gem 'nio4r', '~> 2.0.0'
 
 # Use ActiveStorage variant
